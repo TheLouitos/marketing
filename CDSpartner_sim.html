@@ -44,22 +44,21 @@
             <h1 class="sim">Cirque du soleil CA</h1> <br>
         </div>
         <!-- Première ligne -->
-        <label>number of catégories : </label>
-        <select id="nombreDeLignes">
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-        </select>
-
+            <label id="cat">number of catégories : </label>
+            <select id="nombreDeLignes">
+                <option class="selectx" value="1" selected>1</option>
+                <option class="selectx" value="2">2</option>
+                <option class="selectx" value="3">3</option>
+                <option class="selectx" value="4">4</option>
+                <option class="selectx" value="5">5</option>
+                <option class="selectx" value="6">6</option>
+                <option class="selectx" value="7">7</option>
+            </select>
         <div id="conteneurLignes">
 
             <div class="input-row">
                 <div class="input-group">
-                    <label for="data1">Number of places</label>
+                    <label for="data1">Number of places per catagories</label>
                     <input type="number" id="data1" name="Number of articles">
                 </div>
                 <div class="input-group">
@@ -67,19 +66,19 @@
                     <input type="number" id="data2" name="Fixed Costs">
                 </div>
                 <div class="input-group">
-                    <label for="data3">Peak Price</label>
+                    <label for="data3">Peak period Price</label>
                     <input type="number" id="data3" name="Variable Costs (100%)">
                 </div>
                 <div class="input-group">
-                    <label for="data4">Off-peak Price</label>
+                    <label for="data4">Off-peak period Price</label>
                     <input type="number" id="data4" name="Production capacity & Effective Sales">
                 </div>
                 <div class="input-group">
-                    <label for="data5">Number spec peak</label>
+                    <label for="data5">Number of shows Peak period</label>
                     <input type="number" id="data5" name="Total Salary Cost">
                 </div>
                 <div class="input-group">
-                    <label for="data6">Number spec off-peak</label>
+                    <label for="data6">Number of shows Off-peak period</label>
                     <input type="number" id="data6" name="Hourly Rate Salary">
                 </div>
             </div>
@@ -246,41 +245,49 @@
                 </div>
             </div>
 
-            <div class="finalinput-row">
-                <div class="input-group">
-                    <label class="final" for="data71">Fixed Cost</label>
-                    <input type="number" id="data71" name="Number of articles">
+            <div class="finals">
+                <div class="finalinput-row">
+                    <div class="finput-group">
+                        <label class="final" for="data71">Fixed Cost of CDS without rental fees</label>
+                        <input type="number" id="data71" name="Number of articles">
+                    </div>
+                    <div class="finput-group">
+                        <label class="final" for="data76">Rental fees of CDS</label>
+                        <input type="number" id="data76" name="Hourly Rate Salary">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label class="final" for="data72">Variable cost %</label>
-                    <input type="number" id="data72" name="Fixed Costs">
-                </div>
-                <div class="input-group">
-                    <label class="final" for="data73">Number of tourist</label>
-                    <input type="number" id="data73" name="Variable Costs (100%)">
-                </div>
-                <div class="input-group">
-                    <label class="final" for="data74">Investment of CDS</label>
-                    <input type="number" id="data74" name="Production capacity & Effective Sales">
-                </div>
-                <div class="input-group">
-                    <label class="final" for="data75">Investment of partner</label>
-                    <input type="number" id="data75" name="Total Salary Cost">
-                </div>
-                <div class="input-group">
-                    <label class="final" for="data76">Rental fees</label>
-                    <input type="number" id="data76" name="Hourly Rate Salary">
-                </div>
-            </div>
 
-            <div class="finalinput-row">
-                <div class="input-group">
-                    <label class="final" for="data81">Taxes (IS) (%)</label>
-                    <input type="number" id="data81" name="Number of articles">
+                <div class="finalinput-row">
+                    <div class="finput-group">
+                        <label class="final" for="data73">Number of tourist on the area</label>
+                        <input type="number" id="data73" name="Variable Costs (100%)">
+                    </div>
+                    <div class="finput-group">
+                        <label class="final" for="data74">Investment of Cirque du soleil</label>
+                        <input type="number" id="data74" name="Production capacity & Effective Sales">
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label class="final" for="data82">General Taxes</label>
-                    <input type="number" id="data82" name="Fixed Costs">
+
+                <div class="finalinput-row">
+                    <div class="finput-group">
+                        <label class="final" for="data75">Investment of partner</label>
+                        <input type="number" id="data75" name="Total Salary Cost">
+                    </div>
+                    <div class="finput-group">
+                        <label class="final" for="data72">Variable cost in % of turn-over</label>
+                        <input type="number" id="data72" name="Fixed Costs">
+                    </div>
+                </div>
+
+                <div class="finalinput-row">
+                    <div class="finput-group">
+                        <label class="final" for="data81">Taxes (IS) (%)</label>
+                        <input type="number" id="data81" name="Number of articles">
+                    </div>
+                    <div class="finput-group">
+                        <label class="final" for="data82">General Taxes (TVA for exemple) (%)</label>
+                        <input type="number" id="data82" name="Fixed Costs">
+                    </div>
                 </div>
             </div>
         </div>
