@@ -14,7 +14,7 @@
 
 .containersim, .resultats, a.lonk {
   margin: auto;
-  width: 80%;
+  width: 90%;
 }
 
 .containersim {
@@ -52,54 +52,61 @@ a.lonk {
 .input-row, .finalinput-row {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 30px;
-  padding: 0;
-  justify-content: space-between;
+  justify-content: center; /* Centre les éléments horizontalement */
+  align-content: flex-end; /* Pousse les éléments vers le bas */
+  width: 100%; /* Assurez-vous que le conteneur prend toute la largeur */
+  height: 100%; /* Assurez-vous que le conteneur prend toute la hauteur disponible */
+  /* Vous devrez peut-être ajuster la hauteur en fonction de votre mise en page spécifique */
 }
 
 .input-group {
+  /* Ajustement pour les grands écrans, assurez-vous que cela ne force pas les éléments à s'afficher en colonne */
+  flex: 0 1 calc(16.666% - 20px); /* Exemple pour trois éléments par ligne avec des marges */
+  margin: 10px; /* Marges pour un peu d'espace autour */
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
-  width: 100%;
-  margin-right: 0;
+  justify-content: flex-end;
 }
+
 
 .texte-pour-telephone {
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 786px) {
   .input-group {
-    width: calc(16.666% - 20px);
-    margin-right: 10px;
-    background-color: #f9f9f9;
-    color: #333333;
-    border-radius: var(--input-border-radius);
+    flex: 0 1 calc(16.666% - 20px); /* Prend 16.666% de l'espace disponible, moins 20px pour la marge */
+    margin: 10px; /* Ajoute un peu d'espace autour des éléments */
+    display: flex; /* Garde flex ici pour le contenu interne de .input-group */
+    flex-direction: column; /* Garde la direction de colonne pour l'alignement interne */
   }
 
+  /* Vous pourriez avoir besoin d'ajuster le sélecteur pour les .input-group qui ne doivent pas avoir de marge à droite */
   .input-group:nth-child(3n) {
-    margin-right: 0;
+    margin-right: 10px;
   }
 }
 
-@media (max-width: 767px) {
-  .input-group, .texte-pour-telephone {
-    width: 100%;
-    display: block;
+
+@media (max-width: 786px) {
+  .input-row, .finalinput-row {
+    justify-content: flex-start; /* Aligner les éléments au début, si vous voulez qu'ils commencent à gauche */
+    align-content: stretch; /* Étirer les éléments enfants pour remplir le conteneur si nécessaire */
   }
 
   .input-group {
-    margin-top: 20px;
+    flex: 0 1 100%; /* Chaque .input-group prendra toute la largeur disponible */
+    margin: 10px 0; /* Ajoute de l'espace uniquement en haut et en bas pour les séparer verticalement */
   }
 
-  .containersim {
-    width: 100%;
+  .texte-pour-telephone {
+    display: grid;
   }
 }
+
 
 input[type="button"], input[type="submit"], input[type="reset"], button, .butt {
-  margin-top: 40px;
+  margin-top: 30px;
   transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
   display: block;
   margin-left: auto;
@@ -123,12 +130,11 @@ input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hove
 input[type="number"] {
   border: 1px solid var(--border-color);
   padding: 10px;
-  margin-bottom: 10px;
   background-color: #ffffff;
   border-radius: var(--input-border-radius);
   font-size: 14px;
   box-shadow: var(--input-box-shadow);
-  width: 90%;
+  width: 100%;
 }
 
 #resultat5, #resultat12, #resultat14, #resultat15, #resultat17, #resultat18 {
@@ -137,6 +143,26 @@ input[type="number"] {
 
 label.final {
   color: red;
+  margin-right: 0px;
+}
+
+@media (min-width: 1284px) {
+  label {
+    text-align: center;
+    font-size: 15px;
+  }
+}
+
+
+@media (min-width: 785.99px){
+  label {
+    text-align: center;
+    font-size: 12px;
+  }
+}
+
+#cat {
+  font-size: 20px;
 }
 
 #nombreDeLignes {
@@ -144,4 +170,49 @@ label.final {
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  border-radius: 5px;
+}
+
+.finalinput-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 0px); /* Ajustement pour la marge ajoutée */
+}
+
+
+.finput-group {
+  width: calc(45%);
+  color: #333333;
+  border-radius: var(--input-border-radius);
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.finals {
+  background-color: #f9f9f9;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  padding: 5px;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+}
+
+@media (max-width: 838px) {
+  .finalinput-row,
+  .finput-group {
+    display: block; /* Les inputs s'afficheront en blocs pleine largeur */
+    width: 100%; /* Les inputs prennent la pleine largeur */
+    margin-left: 0; /* Annule la marge latérale */
+    margin-top: 0;
+    margin-top: 10px;
+  }
+  .finals {
+    background-color: #f9f9f9;
+    box-shadow: none;
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 40px;
+    padding-bottom: 20px;
+  }
 }
