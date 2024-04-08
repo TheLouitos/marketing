@@ -92,6 +92,10 @@ a.lonk {
   .input-group {
     margin-top: 20px;
   }
+
+  .containersim {
+    width: 100%;
+  }
 }
 
 input[type="button"], input[type="submit"], input[type="reset"], button, .butt {
