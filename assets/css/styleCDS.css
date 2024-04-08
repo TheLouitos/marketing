@@ -1,0 +1,143 @@
+:root {
+  /* Définition des variables CSS */
+  --font-family-main: 'Montserrat', sans-serif;
+  --text-color: #333;
+  --input-border-radius: 5px;
+  --input-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --button-hover-color: #f35858;
+  --border-color: #cccccc;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box; /* Applique box-sizing à tous les éléments */
+}
+
+.containersim, .resultats, a.lonk {
+  margin: auto;
+  width: 80%;
+}
+
+.containersim {
+  padding: 40px;
+  margin-top: 50px;
+  border-radius: 20px;
+}
+
+
+h1.sim, .resultats, a.lonk {
+  font-family: var(--font-family-main);
+  text-align: center;
+  color: var(--text-color);
+}
+
+h1.sim {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.resultats {
+  margin-top: 50px;
+  padding: 10px;
+  box-shadow: var(--input-box-shadow);
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+a.lonk {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.input-row, .finalinput-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  padding: 0;
+  justify-content: space-between;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 100%;
+  margin-right: 0;
+}
+
+.texte-pour-telephone {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .input-group {
+    width: calc(16.666% - 20px);
+    margin-right: 10px;
+    background-color: #f9f9f9;
+    color: #333333;
+    border-radius: var(--input-border-radius);
+  }
+
+  .input-group:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .input-group, .texte-pour-telephone {
+    width: 100%;
+    display: block;
+  }
+
+  .input-group {
+    margin-top: 20px;
+  }
+}
+
+input[type="button"], input[type="submit"], input[type="reset"], button, .butt {
+  margin-top: 40px;
+  transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: inherit;
+  background: none;
+  text-decoration: none;
+  border: solid 1px #c2c7cc;
+  border-radius: 0.35em;
+  padding: 0.8em 2em;
+  cursor: pointer;
+  outline: 0;
+  width: 80%;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, button:hover, .butt:hover {
+  color: var(--button-hover-color);
+  border-color: rgba(243, 88, 88, 0.5);
+}
+
+input[type="number"] {
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: var(--input-border-radius);
+  font-size: 14px;
+  box-shadow: var(--input-box-shadow);
+  width: 90%;
+}
+
+#resultat5, #resultat12, #resultat14, #resultat15, #resultat17, #resultat18 {
+  font-weight: bold;
+}
+
+label.final {
+  color: red;
+}
+
+#nombreDeLignes {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
