@@ -1,30 +1,27 @@
 function effectuerCalculs() {
-    // Fonction pour convertir l'entrée en nombre après avoir remplacé la virgule par un point.
     function convertirEnNombre(input) {
         return Number(input.replace(',', '.'));
     }
 
-    // Liste explicite des identifiants existants
     const idsExistants = [
-        'data1', 'data2', 'data3', 'data4', 'data5', 'data6','data11', 'data12', 'data13', 'data14', 'data15', 'data16','data21', 'data22', 'data23', 'data24', 'data25', 'data26','data31', 'data32', 'data33', 'data34', 'data35', 'data36','data41', 'data42', 'data43', 'data44', 'data45', 'data46','data51', 'data52', 'data53', 'data54', 'data55', 'data56','data61', 'data62', 'data63', 'data64', 'data65', 'data66','data71', 'data72', 'data73', 'data74', 'data75', 'data76','data81', 'data82'
-        // Continuez avec les identifiants réels existants jusqu'à 'data66' si nécessaire
-        // Assurez-vous d'ajouter uniquement les IDs qui existent
+        'data1', 'data2', 'data3', 'data4', 'data5', 'data6',
+        'data11', 'data12', 'data13', 'data14', 'data15', 'data16',
+        'data21', 'data22', 'data23', 'data24', 'data25', 'data26',
+        'data31', 'data32', 'data33', 'data34', 'data35', 'data36',
+        'data41', 'data42', 'data43', 'data44', 'data45', 'data46',
+        'data51', 'data52', 'data53', 'data54', 'data55', 'data56',
+        'data61', 'data62', 'data63', 'data64', 'data65', 'data66',
+        'data71', 'data72', 'data73', 'data74', 'data75', 'data76',
+        'data81', 'data82'
     ];
 
-    // Utiliser une boucle pour récupérer les valeurs et les convertir, basée sur les IDs existants
     let data = {};
     idsExistants.forEach(id => {
         const element = document.getElementById(id);
-        if (element) { // Vérifie si l'élément existe réellement pour éviter les erreurs
+        if (element) {
             data[id] = convertirEnNombre(element.value);
         }
     });
-
-// Puisque la liste `idsExistants` contrôle les identifiants traités,
-// il n'y a plus besoin de vérifier l'existence de chaque identifiant dans la boucle.
-
-
-    // Calculs simplifiés. Assurez-vous que les ids requis pour les calculs sont inclus dans le tableau 'ids' passé en paramètre.
 
     let data2 = data['data2'] / 100;
     let data12 = data['data12'] / 100;
@@ -40,10 +37,10 @@ function effectuerCalculs() {
     let CAplace5 = (data['data41'] * data42 * data['data43'] * data['data45']) + (data['data41'] * data42 * data['data44'] * data['data46']);
     let CAplace6 = (data['data51'] * data52 * data['data53'] * data['data55']) + (data['data51'] * data52 * data['data54'] * data['data56']);
     let CAplace7 = (data['data61'] * data62 * data['data63'] * data['data65']) + (data['data61'] * data62 * data['data64'] * data['data66']);
-    let CAtotTTC = (CAplace1 + CAplace2 + CAplace3 + CAplace4 + CAplace5 + CAplace6 + CAplace7)
+    let CAtotTTC = (CAplace1 + CAplace2 + CAplace3 + CAplace4 + CAplace5 + CAplace6 + CAplace7);
     let CAtotHT = CAtotTTC / (1 + (data['data82']) / 100);
-    let clientpeak = (data['data1'] * data2 * data['data5']) + (data['data11'] * data12 * data['data15']) + (data['data21'] * data22 * data['data25']) + (data['data31'] * data32 * data['data35']) + (data['data41'] * data42 * data['data45']) + (data['data51'] * data52 * data['data55']) + (data['data61'] * data62 * data['data65'])
-    let clientoffpeak = (data['data1'] * data2 * data['data6']) + (data['data11'] * data12 * data['data16']) + (data['data21'] * data22 * data['data26']) + (data['data31'] * data32 * data['data36']) + (data['data41'] * data42 * data['data46']) + (data['data51'] * data52 * data['data56']) + (data['data61'] * data62 * data['data66'])
+    let clientpeak = (data['data1'] * data2 * data['data5']) + (data['data11'] * data12 * data['data15']) + (data['data21'] * data22 * data['data25']) + (data['data31'] * data32 * data['data35']) + (data['data41'] * data42 * data['data45']) + (data['data51'] * data52 * data['data55']) + (data['data61'] * data62 * data['data65']);
+    let clientoffpeak = (data['data1'] * data2 * data['data6']) + (data['data11'] * data12 * data['data16']) + (data['data21'] * data22 * data['data26']) + (data['data31'] * data32 * data['data36']) + (data['data41'] * data42 * data['data46']) + (data['data51'] * data52 * data['data56']) + (data['data61'] * data62 * data['data66']);
     let penerate = ((clientpeak + clientoffpeak) / data['data73']) * 100;
     let varcost = CAtotHT * (data['data72'] / 100);
     let opincome = CAtotHT - data['data71'] - varcost;
@@ -56,13 +53,21 @@ function effectuerCalculs() {
     let sharepart = netincome / 2;
     let pourcentsharepart = 100 / 2;
     let roicpart = ((sharepart + data['data76']) / data['data75']) * 100;
+    // Calcul de x et y basé sur les nouvelles équations
+    let x = (data['data74'] * (netincome + data['data76'])/(data['data74'] + data['data75']))
+    let y = netincome - x;
+    let shareCDSRE = x;
+    let pourcentshareCDSRE = shareCDSRE / netincome *100;
+    let roicCDSRE = (shareCDSRE / data['data74']) * 100;
+    let sharepartRE = y;
+    let pourcentsharepartRE = sharepartRE / netincome *100;
+    let roicpartRE = ((sharepartRE + data['data76']) / data['data75']) * 100;
 
-    // Créer une fonction pour mettre à jour les résultats
+
     function afficherResultat(elementId, label, valeur) {
         document.getElementById(elementId).innerText = `${label}: ${valeur.toFixed(2)}`;
     }
 
-    // Afficher les résultats
     afficherResultat('resultat1', 'Number of clients Peak period', clientpeak);
     afficherResultat('resultat2', 'Number of clients off-Peak period', clientoffpeak);
     afficherResultat('resultat3', 'Penetration Rate', penerate);
@@ -73,26 +78,96 @@ function effectuerCalculs() {
     afficherResultat('resultat8', 'Operating income (REx)', opincome);
     afficherResultat('resultat11', 'Taxes (IS)', taxIS);
     afficherResultat('resultat12', 'Net income', netincome);
-    afficherResultat('resultat13', 'Share of net income of CDS', shareCDS);
-    afficherResultat('resultat14', '% Share of net income of CDS', pourcentshareCDS);
-    afficherResultat('resultat15', 'ROIC of CDS', roicCDS);
-    afficherResultat('resultat16', 'Share of net income of partner', sharepart);
-    afficherResultat('resultat17', '% Share of net income of partner', pourcentsharepart);
-    afficherResultat('resultat18', 'ROIC of partner', roicpart);
+    afficherResultat('resultat13', 'Share of net income of CDS', shareCDSRE);
+    afficherResultat('resultat14', '% Share of net incomeCDS', pourcentshareCDSRE);
+    afficherResultat('resultat15', 'ROIC of CDS', roicCDSRE);
+    afficherResultat('resultat16', 'Share of net income of partner', sharepartRE);
+    afficherResultat('resultat17', '% Share of net income of partner', pourcentsharepartRE);
+    afficherResultat('resultat18', 'ROIC of partner', roicpartRE);
 
-}
+    // Sauvegarde des données à chaque calcul pour maintenir l'état actuel
+    sauvegarderDonnees();
+    }
 
-function ajusterAffichageLignes() {
-  var nombreChoisi = parseInt(document.getElementById('nombreDeLignes').value, 10);
-  var lignes = document.querySelectorAll('#conteneurLignes .input-row');
-  
-  lignes.forEach((ligne, index) => {
-    ligne.style.display = (index < nombreChoisi) ? 'flex' : 'none';
-  });
-}
+    function sauvegarderDonnees() {
+    const idsExistants = [
+    'data1', 'data2', 'data3', 'data4', 'data5', 'data6',
+    'data11', 'data12', 'data13', 'data14', 'data15', 'data16',
+    'data21', 'data22', 'data23', 'data24', 'data25', 'data26',
+    'data31', 'data32', 'data33', 'data34', 'data35', 'data36',
+    'data41', 'data42', 'data43', 'data44', 'data45', 'data46',
+    'data51', 'data52', 'data53', 'data54', 'data55', 'data56',
+    'data61', 'data62', 'data63', 'data64', 'data65', 'data66',
+    'data71', 'data72', 'data73', 'data74', 'data75', 'data76',
+    'data81', 'data82'
+    ];
+        idsExistants.forEach(id => {
+        const element = document.getElementById(id);
+            if (element) {
+                localStorage.setItem(id, element.value);
+                }
+        });
+    }
 
-// Ajuste l'affichage des lignes lors d'un changement de sélection
-document.getElementById('nombreDeLignes').addEventListener('change', ajusterAffichageLignes);
+    function restaurerDonnees() {
+        const idsExistants = [
+        'data1', 'data2', 'data3', 'data4', 'data5', 'data6',
+        'data11', 'data12', 'data13', 'data14', 'data15', 'data16',
+        'data21', 'data22', 'data23', 'data24', 'data25', 'data26',
+        'data31', 'data32', 'data33', 'data34', 'data35', 'data36',
+        'data41', 'data42', 'data43', 'data44', 'data45', 'data46',
+        'data51', 'data52', 'data53', 'data54', 'data55', 'data56',
+        'data61', 'data62', 'data63', 'data64', 'data65', 'data66',
+        'data71', 'data72', 'data73', 'data74', 'data75', 'data76',
+        'data81', 'data82'
+        ];
+        idsExistants.forEach(id => {
+        const valeurSauvegardee = localStorage.getItem(id);
+        const element = document.getElementById(id);
+            if (element && valeurSauvegardee !== null) {
+            element.value = valeurSauvegardee;
+            }
+        });
+    }
 
-// Appel initial pour définir l'affichage correct au chargement de la page
-document.addEventListener('DOMContentLoaded', ajusterAffichageLignes);
+    function ajusterAffichageLignes() {
+    var nombreChoisi = parseInt(document.getElementById('nombreDeLignes').value, 10);
+    var lignes = document.querySelectorAll('#conteneurLignes .input-row');
+
+        lignes.forEach((ligne, index) => {
+        ligne.style.display = (index < nombreChoisi) ? 'flex' : 'none';
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkbox = document.getElementById('showResults');
+        const resultElements = document.querySelector('.resultats');
+
+        // Initialisation de l'affichage basé sur l'état initial de la case à cocher
+        updateDisplay(checkbox.checked);
+
+        // Écouteur d'événements pour gérer les changements d'état de la case à cocher
+        checkbox.addEventListener('change', function() {
+           updateDisplay(this.checked);
+        });
+
+    function updateDisplay(checked) {
+        resultElements.style.display = checked ? 'block' : 'none';
+    }
+});
+
+
+    document.getElementById('nombreDeLignes').addEventListener('change', ajusterAffichageLignes);
+
+    document.addEventListener('DOMContentLoaded', function() {
+    restaurerDonnees();
+    ajusterAffichageLignes();
+    });
+
+    /// Détails supplémentaires :
+
+    ///1. **LocalStorage** : Les données des formulaires sont sauvegardées à chaque changement et récupérées à chaque chargement de la page grâce à la fonction `restaurerDonnees`.
+    ///2. **Gestion des écouteurs d'événements** : La configuration initiale pour ajuster l'affichage et restaurer les données se fait au chargement de la page. De plus, un écouteur d'événements est ajouté pour gérer les modifications dans le nombre de lignes affichées.
+    ///3. **Affichage des résultats** : Les résultats de tous les calculs et de la résolution des équations sont affichés en temps réel.
+
+    ///Ce script complet prend en charge la récupération et la sauvegarde des valeurs des champs de formulaire, ce qui garantit que les données de l'utilisateur ne sont pas perdues lors du rechargement de la page.
